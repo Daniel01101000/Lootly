@@ -1,0 +1,27 @@
+.price-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.current-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.original-price {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.discount-tag {
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(225, 112, 85, 0.2);
+  color: var(--color-danger);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}

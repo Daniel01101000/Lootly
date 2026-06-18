@@ -1,0 +1,52 @@
+.wishlist-page .page-title {
+  margin-bottom: 32px;
+}
+
+.wishlist-page .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.wishlist-page .empty-icon {
+  color: var(--color-text-muted);
+  opacity: 0.3;
+}
+
+.wishlist-page .empty-state p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  max-width: 360px;
+  line-height: 1.5;
+}
+
+.wishlist-page .deals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .wishlist-page .deals-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .wishlist-page .deals-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .wishlist-page .deals-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
