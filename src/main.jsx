@@ -6,6 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import './styles/global.css';
+//ds
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

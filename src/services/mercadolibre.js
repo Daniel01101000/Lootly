@@ -76,12 +76,14 @@ export async function fetchMercadoLibreDeals() {
       await new Promise((r) => setTimeout(r, 200));
     }
 
+    const seenIds = new Set();
     const seenUrls = new Set();
     const mapped = allResults
       .map(mapMLItem)
       .filter(Boolean)
       .filter((item) => {
-        if (seenUrls.has(item.url)) return false;
+        if (seenIds.has(item.id) || seenUrls.has(item.url)) return false;
+        seenIds.add(item.id);
         seenUrls.add(item.url);
         return true;
       });
@@ -99,10 +101,17 @@ export async function fetchMercadoLibreFromDB() {
     const res = await api.get('/products', {
       params: { store: STORE_DB, sort: 'discount', limit: 500 },
     });
-    const products = (res.data || []).map((p) => ({
-      ...p,
-      store: STORE_DISPLAY,
-    }));
+    const seenIds = new Set();
+    const products = (res.data || [])
+      .map((p) => ({
+        ...p,
+        store: STORE_DISPLAY,
+      }))
+      .filter((p) => {
+        if (seenIds.has(p.id)) return false;
+        seenIds.add(p.id);
+        return true;
+      });
     console.log(`[ML Service] ${products.length} productos desde DB`);
     return products;
   } catch (err) {
